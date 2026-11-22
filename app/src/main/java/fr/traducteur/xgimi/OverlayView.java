@@ -31,9 +31,13 @@ public final class OverlayView extends View {
         final float sizePx;       // taille du texte d'origine (0 si inconnue)
         final boolean center;     // centrer (boutons) ou aligner à gauche
 
+        /** Screen x bounds the label may extend to over the same background. */
+        int roomLeft = Integer.MIN_VALUE, roomRight = Integer.MAX_VALUE;
+
         // Calculé au moment de la mise en page
         StaticLayout layout;
         RectF box;
+        float textX, textY;
 
         public Label(Rect rect, String text, int bg, int fg, float sizePx, boolean center) {
             this.rect = rect;
@@ -42,6 +46,13 @@ public final class OverlayView extends View {
             this.fg = fg;
             this.sizePx = sizePx;
             this.center = center;
+        }
+
+        /** Allowed free space (screen coords), see {@link LabelGeometry#freeSpan}. */
+        public Label withRoom(int left, int right) {
+            roomLeft = Math.min(left, rect.left);
+            roomRight = Math.max(right, rect.right);
+            return this;
         }
     }
 
@@ -76,59 +87,88 @@ public final class OverlayView extends View {
         return labels.isEmpty();
     }
 
-    /** Choisit la taille de police pour que la traduction tienne dans le rectangle. */
+    /**
+     * Keep a readable size close to the Chinese text: widen into free space first
+     * (right; both sides if centered), then shrink, then 2 lines, then ellipsize at min size.
+     */
     private void layoutLabel(Label l, int screenW) {
         Rect r = l.rect;
         float pad = Math.max(2f, 3f * density);
-        int availW = Math.max(1, (int) (r.width() - 2 * pad));
+        String one = l.text.replace('\n', ' ');
         int availH = Math.max(1, r.height());
-
         float start = l.sizePx > 0 ? l.sizePx : availH * 0.62f;
         start = Math.min(start, availH * 0.9f);
-        float min = Math.max(9f * density * 0.75f, start * 0.55f);
+        float min = Math.min(start, Math.max(14f * density, start * 0.7f));
+
+        int roomL = Math.max(0, l.roomLeft == Integer.MIN_VALUE ? r.left : l.roomLeft);
+        int roomR = Math.min(screenW, l.roomRight == Integer.MAX_VALUE ? r.right : l.roomRight);
+        int maxW = Math.max(1, (int) (roomR - roomL - 2 * pad));
+        int baseW = Math.max(1, (int) (r.width() - 2 * pad));
 
         textPaint.setColor(l.fg);
-        float size = start;
         StaticLayout lay = null;
+        float size = start;
+        float need = 0;
         while (true) {
             textPaint.setTextSize(size);
-            lay = build(l.text, availW, l.center);
-            if (fits(lay, availW, availH) || size <= min) break;
-            size = Math.max(min, size * 0.9f);
+            need = textPaint.measureText(one);
+            if (need <= maxW || size <= min) break;
+            size = Math.max(min, size * 0.92f);
         }
-
-        RectF box = new RectF(r);
-        if (!fits(lay, availW, availH)) {
-            // Toujours trop long : on élargit la zone vers la droite (sur une ligne).
-            textPaint.setTextSize(min);
-            float w = textPaint.measureText(l.text.replace('\n', ' ')) + 2 * pad;
-            float maxRight = screenW - pad;
-            box.right = Math.min(maxRight, Math.max(box.right, box.left + w));
-            int newW = Math.max(1, (int) (box.width() - 2 * pad));
-            lay = buildEllipsized(l.text.replace('\n', ' '), newW, l.center);
-            if (lay.getHeight() > box.height()) {
-                float grow = (lay.getHeight() - box.height()) / 2f;
-                box.top -= grow;
-                box.bottom += grow;
+        if (need <= maxW) {
+            int w = Math.max(baseW, (int) Math.ceil(need));
+            lay = build(one, w, l.center, 1);
+        } else {
+            float two = Math.min(start, availH / 2.05f);
+            if (two >= min * 0.9f && !one.isEmpty()) {
+                textPaint.setTextSize(two);
+                StaticLayout t = build(l.text, maxW, l.center, 2);
+                if (fits(t, maxW, (int) (availH * 1.05f))) lay = t;
+            }
+            if (lay == null) {
+                textPaint.setTextSize(min);
+                lay = build(one, maxW, l.center, 1);
             }
         }
+
+        int textW = 0;
+        for (int i = 0; i < lay.getLineCount(); i++) textW = Math.max(textW, (int) Math.ceil(lay.getLineWidth(i)));
+        float boxW = Math.max(r.width(), textW + 2 * pad);
+        RectF box = new RectF(r);
+        if (boxW > r.width()) {
+            if (l.center) {
+                float cx = r.exactCenterX();
+                box.left = cx - boxW / 2f;
+                box.right = cx + boxW / 2f;
+                if (box.left < roomL) box.offset(roomL - box.left, 0);
+                if (box.right > roomR) box.offset(roomR - box.right, 0);
+            } else {
+                box.right = r.left + boxW;
+                if (box.right > roomR) {
+                    box.right = roomR;
+                    box.left = Math.max(roomL, roomR - boxW);
+                }
+            }
+            box.left = Math.min(box.left, r.left);
+            box.right = Math.max(box.right, r.right);
+        }
+        if (lay.getHeight() > box.height()) {
+            float grow = (lay.getHeight() - box.height()) / 2f;
+            box.top -= grow;
+            box.bottom += grow;
+        }
+        l.textX = l.center ? box.centerX() - lay.getWidth() / 2f : box.left + pad;
+        l.textY = box.top + (box.height() - lay.getHeight()) / 2f;
         l.layout = lay;
         l.box = box;
     }
 
-    private StaticLayout build(String text, int width, boolean center) {
+    private StaticLayout build(String text, int width, boolean center, int maxLines) {
         return StaticLayout.Builder.obtain(text, 0, text.length(), new TextPaint(textPaint), width)
                 .setAlignment(center ? Layout.Alignment.ALIGN_CENTER : Layout.Alignment.ALIGN_NORMAL)
                 .setIncludePad(false)
                 .setLineSpacing(0f, 0.95f)
-                .build();
-    }
-
-    private StaticLayout buildEllipsized(String text, int width, boolean center) {
-        return StaticLayout.Builder.obtain(text, 0, text.length(), new TextPaint(textPaint), width)
-                .setAlignment(center ? Layout.Alignment.ALIGN_CENTER : Layout.Alignment.ALIGN_NORMAL)
-                .setIncludePad(false)
-                .setMaxLines(1)
+                .setMaxLines(maxLines)
                 .setEllipsize(TextUtils.TruncateAt.END)
                 .build();
     }
@@ -154,16 +194,17 @@ public final class OverlayView extends View {
         getLocationOnScreen(loc);
         canvas.save();
         canvas.translate(-loc[0], -loc[1]);
-        float radius = 3f * density;
-        float pad = Math.max(2f, 3f * density);
-        for (Label l : labels) {
+        // Small radius + 2 px overflow: rounded corners must not let Chinese glyph
+        // fragments show at the edges (stray "：" artifacts).
+        float radius = 1.5f * density;
+        for (int i = 0, n = labels.size(); i < n; i++) {
+            Label l = labels.get(i);
             if (l.layout == null || l.box == null) continue;
             bgPaint.setColor(l.bg);
             RectF b = l.box;
-            canvas.drawRoundRect(b.left - 1, b.top - 1, b.right + 1, b.bottom + 1, radius, radius, bgPaint);
+            canvas.drawRoundRect(b.left - 2, b.top - 2, b.right + 2, b.bottom + 2, radius, radius, bgPaint);
             canvas.save();
-            float y = b.top + (b.height() - l.layout.getHeight()) / 2f;
-            canvas.translate(b.left + pad, y);
+            canvas.translate(l.textX, l.textY);
             l.layout.getPaint().setColor(l.fg);
             l.layout.draw(canvas);
             canvas.restore();

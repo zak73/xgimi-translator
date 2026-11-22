@@ -48,7 +48,7 @@ Android版本	Android version
 校准越精确，画面校正效果越佳	The more precise the calibration, the better the correction
 若自动梯形校正后画面不是矩形，请使用梯形校准	If the picture isn't rectangular after auto keystone, use keystone calibration
 自动梯形校正	Auto keystone correction
-仅当自动梯形校正效果不方正时使用	Only use if auto keystone isn't square
+仅当自动梯形校正效果不方正时使用	Only use if the picture is still skewed after auto keystone
 移轴幕布对齐	Lens-shift screen alignment
 一键画面校正	One-click picture correction
 自动画面调整	Auto picture adjustment
@@ -184,7 +184,7 @@ Boost 亮度档位下不支持色彩空间	Color space unavailable in Boost mode
 结束校准	Stop calibration
 输入距离	Enter distance
 校准画面	Calibration picture
-若方正请选择完成校准，不方正请选择继续校准	Square picture: Finish; otherwise: Continue
+若方正请选择完成校准，不方正请选择继续校准	Straight picture: Finish; otherwise: Continue
 陀螺仪已校准\n当前画面是否方正？	Gyroscope calibrated\nIs the picture square?
 陀螺仪校准	Gyroscope calibration
 保持投影仪水平放置并正投\n确保画面矩形且底边和地面平行	Projector level and straight on\nRectangular picture, bottom edge parallel to the floor
@@ -209,7 +209,7 @@ Boost 亮度档位下不支持色彩空间	Color space unavailable in Boost mode
 请在引导下完成右侧步骤恢复正常画面	Follow the steps on the right to restore the picture
 画面是否方正将影响校准效果	The picture's shape affects calibration
 重新摆放	Reposition
-请确认投影画面是否方正?	Is the picture square?
+请确认投影画面是否方正?	Is the picture straight?
 请联系客服处理	Contact support
 手机和投影连接同一个网络，当前网络：	Phone and projector on the same network, current network:
 手机和投影连接同一个网络	Phone and projector on the same network
@@ -757,14 +757,14 @@ XGIMI Sound+内部扬声器 (低音)	XGIMI Sound+ internal speakers (bass)
 镜头设置	Lens settings
 镜头位移	Lens shift
 已调整到上限	Limit reached
-校准	Calibrate
+校准	Calibration
 陀螺仪水平校准	Gyroscope level calibration
 若自动梯形校正后投影出现旋转，请使用陀螺仪水平校准	Picture tilted after auto keystone? Calibrate the gyroscope
 吊装背投	Ceiling, rear projection
 选择生效的光源	Choose the active light source
 光源1	Light source 1
 光源2	Light source 2
-全开	All on
+全开	Both
 光源模式	Light source mode
 切换不同的光源模式，选择偏好的显示效果	Switch light source mode for your preferred display
 光源使用时间	Light source usage time
@@ -833,8 +833,8 @@ XGIMI Sound+内部扬声器 (低音)	XGIMI Sound+ internal speakers (bass)
 开启后，将主控设备的亮度或设置参数同步至被控机器	Syncs the master's brightness or settings to the other projectors
 亮度同步	Brightness sync
 开启后将保证同步的投影亮度一致	Same brightness on synced projectors
-主控	Master
-被控	Slave
+主控	Primary
+被控	Secondary
 画质同步	Picture sync
 开机后将主控设备的画质参数同步给被控设备	At startup, copies the master's picture settings to slaves
 设置同步	Settings sync
@@ -904,7 +904,7 @@ USB有线同屏	Wired USB screen mirroring
 网络不可用	Network unavailable
 无法连接此网络	Can't connect to this network
 无法保存网络	Can't save network
-忽略	Ignore
+忽略	Forget
 显示密码	Show password
 请输入%s	Enter %s
 至少输入5个字符	At least 5 characters
@@ -1250,7 +1250,7 @@ XGIMI Sound 组合	XGIMI Sound combination
 强度	Strength
 通过AI算法，提升视频清晰度	AI improves video sharpness
 [{"key": "SUPPORT_GMUI6_MISCKEY","pkg": "com.xgimi.misckey","name": "是否支持Gmui6"}]	[{"key": "SUPPORT_GMUI6_MISCKEY","pkg": "com.xgimi.misckey","name": "Supports Gmui6"}]
-曲面调整	Curved surface adjustment
+曲面调整	Curved surface
 曲面1	Curve 1
 曲面2	Curve 2
 曲面3	Curve 3
@@ -1262,7 +1262,7 @@ XGIMI Sound 组合	XGIMI Sound combination
 画质同步中，请稍后重试	Picture sync in progress, try again later
 开机自动对焦	Autofocus at startup
 温度	Temperature
-系统升级	System upgrade
+系统升级	System update
 系统更新	System update
 系统版本	System version
 蓝牙音乐播控栏	Bluetooth music control bar
@@ -1473,8 +1473,8 @@ AI画质增强	AI Picture Quality Enhancement
 启动外设断开提示	Enable Peripheral Disconnection Tip
 启动外设弹窗	Enable Peripheral Pop-up Window
 启动播放器动画	Start the player animation
-音效： 原生	Sound Effect: Native
-幕布	Curtain
+音效： 原生	Sound: Original
+幕布	Screen
 按 @ 退出	Press @ to exit
 关闭智能防射眼功能？	Turn Off Intelligent Eye Protection Function?
 感应区域内检测到人体移动，已调低投影亮度以减少人眼刺激	Human movement detected in the sensing area. Projection brightness has been reduced to minimize eye irritation.
@@ -1504,3 +1504,620 @@ AI画质增强	AI Picture Quality Enhancement
 按 @ 前往	Press @ to go
 可至“设置>通用”管理	Manage in Settings > General
 按 @ 去量身高	Press @ to measure height
+# Other XGIMI apps (launcher, files, player, system UI, installer)
+分类	Categories
+电视剧	TV series
+综艺	Variety
+纪录片	Documentaries
+喜剧	Comedy
+军旅	Military
+战争	War
+谋战	Espionage
+爆笑	Comedy
+戏曲	Chinese opera
+广场舞	Square dance
+家长里短	Family life
+家长	Parents
+巨制	Blockbusters
+历史	History
+少儿	Kids
+动漫	Anime
+教育	Education
+首页	Home
+推荐	Featured
+投影管家	Projector assistant
+任意门	Shortcuts
+玩机攻略	Tips
+极米投屏	Screen cast
+星期一	Monday
+星期二	Tuesday
+星期三	Wednesday
+星期四	Thursday
+星期五	Friday
+星期六	Saturday
+星期日	Sunday
+激活	Activate
+激活成功!	Activated!
+兑换中...	Redeeming…
+全部消息	All messages
+极米桌面	XGIMI Home
+通知中心	Notifications
+宝贝资料	Child profile
+编辑宝贝资料	Edit profile
+同意	Agree
+不同意	Disagree
+停止服务	Stop service
+儿童隐私保护指引	Child privacy
+点击加载更多	Load more
+没有更多数据	No more data
+加载失败，请点我重试	Failed, retry
+解散文件夹	Ungroup folder
+添加至文件夹	Add to folder
+编辑文件夹	Edit folder
+卸载	Uninstall
+已将该应用移出	App removed
+从文件夹移出	Remove from folder
+解散	Ungroup
+卸载之后该应用将不可使用	The app will no longer be usable
+暂无观影记录	No history
+查看少儿播放记录	Kids history
+答题解锁	Answer to unlock
+关闭定时休息	Disable break timer
+定时休息	Break timer
+防射眼保护	Eye protection
+小朋友要关机啦，休息一下吧！	Shutting down: time for a break!
+全部清空	Clear all
+完成下载，按OK键播放	Downloaded, OK to play
+多云	Cloudy
+支付异常，请稍后重试	Payment error, retry
+常见问题	FAQ
+视频出了点问题，先看看其他视频也很精彩哦	Video unavailable, try another
+二维码已失效	QR code expired
+获取二维码失败	QR code failed
+获取二维码中	Loading QR code
+筛选	Filter
+快速返回顶部	Back to top
+请重新选择筛选条件	Change filters
+暂无内容	No content
+筛选结果	Results
+雾	Fog
+极速模式下不支持一键画面校正	Auto correction unavailable in Game mode
+调整应用位置	Move app
+按返回完成编辑并退出	Back to finish
+长按OK键编辑应用	Long-press OK to edit
+长按编辑	Long-press to edit
+按确定应用位置	OK to place
+按更多功能	More options
+按完成编辑并退出	Finish and exit
+按移动排序	Move to sort
+按【菜单键】或长按【OK键】删除学习历史	Menu or long-press OK to delete
+学习历史	Study history
+暂无收藏	No favorites
+暂无学习记录	No history
+暂无历史记录	No history
+退出编辑	Exit editing
+全部删除	Delete all
+按【菜单键】或长按【OK键】删除历史记录	Menu or long-press OK to delete
+【菜单键】	【Menu】
+或长按	or long-press
+【OK键】	【OK】
+我的收藏	My favorites
+我的片单	My list
+或	or
+猜你喜欢	For you
+删除全部	Delete all
+删除失败	Delete failed
+删除成功	Deleted
+将同步删除云端历史记录，删除后不可恢复	Cloud history will also be deleted permanently
+学习记录	Study history
+完成编辑并退出	Finish and exit
+主页设定	Home settings
+获取数据失败	Load failed
+请输入激活码	Enter activation code
+激活码错误	Wrong code
+激活码无效	Invalid code
+清空	Clear
+请输入搜索内容的首字母	Enter initials
+加载出错了	Load error
+加载中...	Loading…
+本地应用	Local apps
+高清	HD
+开灯	Lights on
+自然	Natural
+标清	SD
+应用排序	Sort apps
+倍速播放	Playback speed
+超清	Full HD
+应用卸载	Uninstall
+全部应用	All apps
+已开通	Active
+未开通	Inactive
+全部历史	All history
+极米会员	XGIMI membership
+极米服务	XGIMI services
+登录后可同步信息	Sign in to sync
+全部标记为已读	Mark all read
+OK键选择，左右键移动	OK select, ◀▶ move
+长按OK键移除导航栏标签	Long-press OK to remove tab
+按返回键保存并退出	Back to save and exit
+长按OK键调整导航栏排序	Long-press OK to sort tabs
+按OK键确定频道位置	OK to place
+可移动频道	Movable tabs
+确定频道位置	Place tab
+无法连接网络，请检查网络后重试	No network, check connection
+网络连接断开	Network disconnected
+没有内容	No content
+暂无消息	No messages
+网络未连接,请检查网络后重试	No network, check connection
+订阅的影片已上线	Followed title available
+暂未开通	Not active
+支付成功	Payment successful
+按OK键，继续播放	OK to resume
+播放异常	Playback error
+刚刚	Just now
+按立即播放	Play now
+视频加载中，请稍候...	Loading video…
+护眼设置	Eye care
+已购影片	Purchased
+购买成功	Purchased
+已购买	Purchased
+晴	Sunny
+雨	Rain
+全部已读	All read
+检查更新	Check updates
+清空极米桌面数据	Clear Home data
+进入资源管理器	Open Files
+进入系统设置	Open Settings
+安全模式界面	Safe mode
+扫码支付	Pay by QR
+搜索历史	Recent searches
+热门搜索	Trending
+无结果，为你推荐	No results, suggestions
+的搜索结果	results
+检测到镜头前有人时，自动降低投影亮度	Dims when someone is in front of the lens
+菜单加载中	Loading menu
+雪	Snow
+全部赛事	All matches
+预约	Book
+已取消预约	Booking cancelled
+已预约	Booked
+继续播放中，按OK键重新播放	Resuming, OK to restart
+即将播放	Starting soon
+关机菜单	Power menu
+快捷设置	Quick settings
+切换HDMI	Switch HDMI
+我的预约	My bookings
+单击【菜单键】或【左键】编辑	Menu or ◀ to edit
+后天	In 2 days
+应用安装中	Installing
+退出排序模式	Exit sort mode
+退出卸载模式	Exit uninstall mode
+进入排序模式	Sort mode
+进入卸载模式	Uninstall mode
+暂无可添加应用	No apps to add
+已是最后一集	Last episode
+已是第一集	First episode
+播放完毕	Playback finished
+即将播放下一集	Next episode
+正在为您播放上一集	Previous episode
+明天	Tomorrow
+请在购买会员后播放	Membership required
+加载失败	Load failed
+到底啦，按	End of list, press
+风	Wind
+阴	Overcast
+等待中	Waiting
+完成编辑	Done
+文本	Text
+音频	Audio
+视频	Video
+图片	Pictures
+添加设备	Add device
+支持Samba/DLNA/NFS	Samba/DLNA/NFS
+添加局域网设备	Add network device
+全部	All
+资源管理器	Files
+百度网盘	Baidu Drive
+停止复制	Stop copying
+修改时间:	Modified:
+选择文件类型	File type
+清除观看记录	Clear history
+播放记录已清除	History cleared
+清空播放历史记录	Clear history
+连接并添加	Connect and add
+连接失败	Connection failed
+连接共享设备	Connect share
+连接超时，请检查网络后重试	Timed out, check network
+正在连接中...	Connecting…
+内容为空	Empty
+复制文件	Copy
+复制失败	Copy failed
+复制成功	Copied
+正在复制	Copying…
+创建文件夹失败	Folder creation failed
+创建文件夹成功	Folder created
+创建成功	Created
+剪切文件	Cut
+正在粘贴	Pasting…
+删除文件	Delete
+删除播放历史记录	Delete history
+详细信息	Details
+选择设备类型	Device type
+文档	Documents
+请输入用户名	Username
+文件粘贴出错	Paste error
+无法连接服务器，请检查你的网络	Server unreachable
+退出	Exit
+退出百度网盘?	Exit Baidu Drive?
+文件已存在	File exists
+遥控器点击菜单键或长按OK键进行更多操作	Menu or long-press OK for more
+文件名不能为空	Name required
+文件不存在	File not found
+解压	Extract
+解压文件到当前目录	Extract here
+删除后将无法恢复	Cannot be undone
+文件删除成功	File deleted
+打开方式	Open with
+从:	From:
+名称:	Name:
+大小:	Size:
+到:	To:
+文件夹不能播放	Folder can't be played
+目录模式	Folder view
+图标模式	Grid view
+已取消	Cancelled
+请输入共享设备IP地址	Share IP address
+IP地址无效	Invalid IP
+连接已断开	Disconnected
+存储空间不足	Not enough space
+列表模式	List view
+本地图片	Local pictures
+手动连接	Manual connect
+您可能想打开的文件	Suggested files
+下次可通过“快捷设置” 快速访问U盘	Quick USB access via Quick settings
+网上邻居登录成功	Network login OK
+解压失败	Extract failed
+内存不足	Out of memory
+解压成功	Extracted
+多选	Multi-select
+按名称排序	Sort by name
+网络不可用，请检查网络后重试	Network unavailable
+新建文件夹	New folder
+未搜索到可连接设备	No device found
+无法打开该文件	Can't open file
+暂无文件	No files
+请先复制或剪切文件	Copy or cut first
+仅支持视频/图片/音频，找不到文件可按“菜单”键后选择刷新	Video/picture/audio only. Menu > Refresh
+打开文件夹	Open folder
+密码错误	Wrong password
+粘贴	Paste
+播放模式	Play mode
+请选择文件	Select a file
+再按一次退出	Press again to exit
+刷新	Refresh
+找不到文件可按“菜单”键后选择刷新	Missing? Menu > Refresh
+重命名	Rename
+重命名失败	Rename failed
+重命名成功	Renamed
+正在扫描设备	Scanning…
+内置存储	Internal storage
+文件名 (关键字)	File name
+搜索视频文件	Search videos
+请输入关键字	Keyword
+搜索文件	Searching…
+全选	Select all
+按时间排序	Sort by date
+编辑	Edit
+空	Empty
+格式化	Format
+格式化失败	Format failed
+格式化完成	Formatted
+格式化中...	Formatting…
+进行更多设置	More options
+请勿关闭设备或切掉电源	Do not power off
+按	Press
+长按菜单键或OK键进行更多操作	Long-press Menu or OK for more
+键进行更多操作	for more options
+键或长按	or long-press
+长按	Long-press
+粘贴成功	Pasted
+U盘已拔出	USB drive removed
+删除设备	Remove device
+全部文件	All files
+检测到您已插入USB设备	USB device detected
+快速打开U盘文件	Open USB drive
+移动存储	USB storage
+所有影片	All videos
+观看记录	History
+始终	Always
+仅此一次	Just once
+安装极米认证版本	Install certified version
+该应用安装来源未经极米认证，可能存在兼容性问题，建议安装应用市场中的认证应用	Source not certified by XGIMI; may be incompatible. Prefer the App Center version
+应用安装异常	Install error
+系统已禁止安装当前应用	Install blocked
+当前应用和系统不兼容，无法安装	App incompatible
+无效安装包，无法安装	Invalid package
+可用空间不足，建立清理后重试	Not enough space
+应用签名无效，无法安装	Invalid signature
+正在准备安装应用	Preparing install
+抱歉，出现了一些问题，可前往极米App进行问题反馈，我们将尽快优化产品和服务。	Something went wrong. Report it in the XGIMI app.
+解析软件包时出现问题。	Problem parsing the package.
+软件包安装程序	Package installer
+未知	Unknown
+未找到应用	App not found
+无法卸载应用。	Can't uninstall.
+要安装此应用吗？	Install this app?
+要更新此应用吗？	Update this app?
+已安装应用。	App installed.
+未安装应用。	App not installed.
+此应用与您的电视不兼容。	App incompatible with this TV.
+应用未安装：软件包似乎无效。	Not installed: invalid package.
+正在安装…	Installing…
+管理应用	Manage apps
+正在准备安装应用…	Preparing…
+已成功安装	Installed
+空间不足	Not enough space
+要卸载此应用吗？	Uninstall this app?
+卸载应用	Uninstall app
+卸载完成。	Uninstalled.
+卸载失败。	Uninstall failed.
+卸载更新	Uninstall updates
+要将此应用替换为出厂版本吗？这样会移除所有数据。	Replace with factory version? All data will be removed.
+正在卸载…	Uninstalling…
+仍然更新	Update anyway
+不允许	Not allowed
+应用中心	App Center
+一键更新	Update all
+取消下载	Cancel download
+取消更新	Cancel update
+安装中	Installing
+应用管理	Manage apps
+重新下载	Download again
+重新更新	Retry update
+下载	Download
+等待	Waiting
+强行停止	Force stop
+应用自动升级将在关机时进行	Auto-update at shutdown
+长按OK键排序	Long-press OK to sort
+暂时没有搜索到内容	No results
+热门应用	Popular apps
+搜索结果	Search results
+应用屏幕截图	Screenshots
+相关推荐	Related
+下载失败，请重试	Download failed
+安装失败，请重试	Install failed
+网络异常，请检查网络后重试	Network error
+存储空间不足，请清理系统后重试	Not enough space
+清除数据成功	Data cleared
+程序已停止	App stopped
+消息中心	Messages
+消息通知	Notifications
+单击 [菜单键] 或 [向左键] 编辑	Menu or ◀ to edit
+已取消定时关机	Sleep timer cancelled
+更新并关机	Update and shut down
+更新过程中请勿切断电源	Don't unplug during update
+取消定时关机	Cancel sleep timer
+即将切换至音响模式，按 @ 取消	Switching to speaker mode, @ to cancel
+返回键	Back
+Home键	Home
+菜单键	Menu
+OK键	OK
+手动对焦,按遥控器方向键左右键调焦,按返回键退出	Manual focus: ◀▶ to adjust, Back to exit
+已退出手动调焦	Manual focus exited
+校正失败，请调整投影距离或检查摄像头是否被遮挡	Failed: check distance and camera
+距离过远，校准失败	Too far, failed
+距离过近，校准失败	Too close, failed
+自动对焦初始化失败	Autofocus init failed
+摄像头初始化失败，请重启系统	Camera error, reboot
+按手动位移	Manual shift
+对齐完成	Aligned
+正在定位幕布	Locating screen…
+尝试松手，自动对齐幕布	Release to auto-align
+定位完成，按	Done, press
+手动调整	Manual adjust
+墙面定位失败	Wall detection failed
+墙面扫描已中断	Wall scan interrupted
+过程中请勿移动设备	Don't move the device
+正在扫描墙面	Scanning wall…
+去校准	Calibrate
+效果OK	Looks good
+画面自动校正效果不佳？	Auto correction off?
+校正完成，按【OK】键手动微调	Done, OK to fine-tune
+校正完成，按	Done, press
+键手动微调	to fine-tune
+画面校正完成，按	Corrected, press
+手动校正	Manual correction
+画面校正完成，按 @ 手动校正	Corrected, @ to adjust
+画面不清晰？按	Blurry? Press
+巨幕模式下仅支持手动梯形矫正	21:9: manual keystone only
+ARC设备	ARC device
+ARC设备已拔出,按@键切换声音输出	ARC device unplugged, @ to switch audio output
+键切换声音输出	to switch audio output
+蓝牙设备	Bluetooth device
+USB设备	USB device
+正在自动对焦，请稍后	Autofocusing…
+自动对焦完成	Focus done
+自动对焦中	Focusing…
+校正失败，请调整投影位置或角度	Failed: adjust position or angle
+梯形校正异常，请重启设备	Keystone error, reboot
+画面或镜头被遮挡，请检查后重试	Image or lens blocked
+设备关机中	Shutting down…
+投影角度较大，推荐正投获得更佳画质	Steep angle, project head-on
+当前模式不支持自动梯形校正	Auto keystone unavailable
+当前模式下不支持自动梯形校正	Auto keystone unavailable
+选择校准方式	Calibration method
+高级校准	Advanced calibration
+自动校正已完成	Auto correction done
+学习幕布对齐	Learn screen alignment
+移动投影仪，使投影画面超出幕布四边	Move projector so image overflows screen
+发现蓝牙	Bluetooth found
+摄像头初始化失败，请重试	Camera error, retry
+日光	Daylight
+去更改	Change
+已开启节能模式	Eco mode on
+内存已清空	Memory cleared
+已匹配校正设置	Correction matched
+按 @ 设置幕布参数	@ : screen settings
+建议设置幕布参数，提升观影体验	Set up your screen for better picture
+调整幕布	Adjust screen
+延时关灯	Delayed light-off
+延时关灯已取消	Delayed light-off cancelled
+移动投影仪，确保幕布边框位于灰色区域内，以达到最佳画幕对齐效果	Keep screen edges inside the gray area
+云台移动受阻，请移除障碍物	Gimbal blocked, remove obstacle
+对比度增强已关闭	Contrast boost off
+对比度增强已生效	Contrast boost on
+立即升级	Update now
+当前片源支持杜比视界	Dolby Vision source
+按开启	to enable
+已更换	Replaced
+下次提醒	Remind later
+不再提醒	Don't remind
+节能模式已关闭	Eco mode off
+节能模式已开启	Eco mode on
+查看详情	Details
+巨幕模式开启失败	21:9 mode failed
+可至"设置>通用"管理	Manage in Settings > General
+关闭功能	Turn off
+已关闭防射眼保护	Eye protection off
+关闭“防射眼保护”功能？	Turn off eye protection?
+检测到镜头前有人/物体移动，已降低亮度，离开后会自动恢复	Motion in front of lens: brightness lowered until clear
+检测到镜头前有人/物体移动，已降低亮度，离开后自动恢复	Motion in front of lens: brightness lowered until clear
+按@退出 长按关闭功能	@ exit, long-press to disable
+对焦完成，长按对焦键微调	Focused. Long-press focus to fine-tune
+当前片源支持 HDR Vivid 模式	HDR Vivid source
+调整	Adjust
+选点	Point
+观影模式	Movie mode
+自动对焦失败，请重试	Autofocus failed
+无音乐	No music
+有音乐	With music
+幕布下不支持巨幕模式	21:9 unavailable with screen
+已更新墙面设置	Wall settings updated
+OSD已禁用	OSD disabled
+手机蓝牙已断开	Phone Bluetooth disconnected
+音响已断开	Speaker disconnected
+智能幕布已断开	Smart screen disconnected
+麦克风已断开	Mic disconnected
+手机APP已断开	Phone app disconnected
+电源已接入，开始充电	Charging
+电源已断开	Power unplugged
+立即关机	Shut down now
+关机	Power off
+休眠	Sleep
+待机	Standby
+旅行关机	Travel off
+温度过高，已切换至默认模式	Overheat: default mode
+适配器已拔出	Adapter unplugged
+网络异常	Network error
+暂无进行中应用	No open apps
+一键清理	Clear all
+按$可关闭应用	$ to close app
+重启	Restart
+对齐失败，未发现幕布位置	Failed: screen not found
+幕布对齐已中断	Alignment interrupted
+幕布对齐中	Aligning to screen…
+画面参数已更新	Picture updated
+截屏保存在:内置存储/Pictures/Screenshots	Screenshot saved to Pictures/Screenshots
+设备温度检测异常	Temperature sensor error
+启动温度保护	Thermal protection
+中心圆为正圆时画面比例最佳	Round circle = correct ratio
+梯形校正复位	Reset keystone
+关屏	Screen off
+再按一次退出分屏	Press again to exit split
+退出分屏	Exit split screen
+窗口互换	Swap windows
+按 @ 退出分屏	@ to exit split screen
+应用已启动	App launched
+巨幕模式已开启	21:9 mode on
+温度异常	Temperature abnormal
+按 @ 移轴	@ to shift
+按 @ 微调	@ to fine-tune
+定时关机	Sleep timer
+自动关机提醒	Auto power-off
+取消关机	Cancel shutdown
+自动梯形校正中	Auto keystone…
+一键画面校正中	Correcting image…
+投影距离较近，已自动降低亮度	Too close: brightness lowered
+应用更新中，请勿断电	Updating, don't unplug
+根据设备放置方向，自动转换为吊装模式	Ceiling mode auto-enabled
+根据设备放置方向，自动转换为正装模式	Table mode auto-enabled
+墙面颜色适配中	Adapting to wall color…
+保留本次适配结果？	Keep result?
+使用适配色彩	Adapted colors
+使用原始色彩	Original colors
+已匹配最佳效果	Best match applied
+电源功率不足	Power too low
+电池电量不足	Low battery
+检测到设备风扇异常，请联系客服	Fan error, contact support
+可尝试重启解决，多次出现请联系客服	Restart; contact support if it persists
+风扇异常，即将自动关机，检测到设备风扇异常，请联系售后，倒计时	Fan error, shutting down. Contact support
+温度过高，即将自动关机，可尝试重启解决，请联系售后，倒计时	Overheating, shutting down
+本地播放器	Local player
+已经是第一张！	First picture!
+已经是最后一张！	Last picture!
+单声道	Mono
+环绕声	Surround
+该视频不支持倍速	Speed unavailable
+解码失败	Decode failed
+无音频	No audio
+文件格式不支持	Unsupported format
+内嵌字幕	Embedded subtitles
+是否删除所有播放记录?	Clear all history?
+中文	Chinese
+英语	English
+法语	French
+德语	German
+日语	Japanese
+韩语	Korean
+西班牙语	Spanish
+意大利语	Italian
+俄语	Russian
+葡萄牙语	Portuguese
+未知语言	Unknown language
+图片加载失败	Image load failed
+播放器异常，请重试	Player error
+设置音轨字幕	Audio & subtitles
+按【菜单键】设置音轨字幕	Menu: audio & subtitles
+分钟前	min ago
+小时前	h ago
+天前	d ago
+当前片源不支持	Not supported
+幻灯片已暂停，按OK键继续	Paused, OK to resume
+幻灯片播放	Slideshow
+幻灯片播放中，按OK键暂停	Slideshow, OK to pause
+幻灯片播放已停止	Slideshow stopped
+左旋转	Rotate left
+右旋转	Rotate right
+速度	Speed
+字幕切换失败	Subtitle switch failed
+字幕切换成功	Subtitles switched
+字幕语言	Subtitle language
+字幕列表	Subtitles
+音轨	Audio track
+音轨选择	Audio track
+播放记录	History
+系统播放器	System player
+无音轨	No audio track
+循环模式	Repeat
+不循环	Off
+目录循环	Folder
+单个循环	One
+播放设置	Playback
+字幕设置	Subtitles
+透明度	Opacity
+字幕选择	Subtitles
+字幕颜色	Color
+灰色	Gray
+字幕位置	Position
+无字幕	None
+字幕大小	Size
+字幕同步	Sync
+播放器	Player
+视频设置	Video
+原始大小	Original size
+视频格式不支持	Unsupported video
+音频格式不支持	Unsupported audio
+请稍候...	Please wait…
+前天	2 days ago
+昨天	Yesterday
+已开启超分辨率	Super resolution on

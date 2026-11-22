@@ -8,7 +8,8 @@ No root, fully offline, fully reversible.
 | Model | Status |
 |---|---|
 | **RS30 Ultra** (`XGIMI TV DOHKO`, Android 14) | ✅ Tested, works |
-| RS30 Pro / Pro Max / Ultra Max (China) | ❓ Not tested, should work |
+| **RS30 Pro** (`XGIMI TV DOHKO`, product `athena3pro`, Android 14) | ✅ Tested, works |
+| RS30 Pro Max / Ultra Max (China) | ❓ Not tested, should work |
 | Horizon 30 series (global) | ➖ Not needed: runs Google TV with normal language settings |
 
 I only own an **RS30 Ultra**. According to the launch coverage, the four China-market RS30 models share:
@@ -36,10 +37,10 @@ An **accessibility service** that translates the screen on the fly:
 
 1. it takes a screenshot (Android 11+ accessibility API);
 2. it reads the Chinese text with **ML Kit on-device OCR**, which is built into the app and doesn't need Google Play services;
-3. it matches each line against a dictionary of the ~1,500 strings in XGIMI Settings, tolerating small OCR errors;
+3. it matches each line against a dictionary of ~2,100 strings from XGIMI Settings and the other XGIMI apps (launcher, file manager, player, system UI, installer), tolerating OCR errors (traditional characters, icon glyphs, misread characters);
 4. it draws the **English or French** translation on top, in the original colors.
 
-Translations show up about 0.4 s after each remote key press, and instantly on screens it has already translated. A watchdog restarts the service if the firmware kills it, at boot or after an update.
+On Android 14 it captures only the menu window, so translations stay on screen while you navigate and are swapped in one go: about 0.2 s after a key press on screens it has already seen (remembered across restarts), 0.5–0.8 s on new screens, where only the part of the screen that changed is read again. Video players and HDMI input are never scanned. A watchdog restarts the service if the firmware kills it, at boot or after an update.
 
 ---
 
